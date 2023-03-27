@@ -1,0 +1,27 @@
+terraform {
+  required_providers {
+    github = {
+      source  = "integrations/github"
+      version = "~> 4.0"
+    }
+  }
+}
+
+provider "github" {
+  token = var.token
+}
+
+variable "token" {
+  type    = string
+  default = "ghp_xxxxxx" # Your Github personal access token
+}
+
+resource "github_repository" "CDD-Repo {
+  name        = "CDD-Repo"
+  description = "CDD-Repo from Terraform"
+  visibility = "public"
+  template {
+    owner      = "2000030451navya"
+    repository = "CDD Repo"
+  }
+}
